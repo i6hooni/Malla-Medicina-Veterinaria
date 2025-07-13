@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Malla Medicina Veterinaria — Interactiva</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#f9f9f9;padding:20px}
+  h1{margin-top:0}
+  h2{margin:35px 0 10px}
+  .semestre{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:25px}
+  .ramo{min-width:220px;padding:10px;border:2px solid #444;border-radius:8px;
+        background:#fff;cursor:pointer;text-align:center;transition:.3s}
+  .ramo.bloqueado{background:#ddd;color:#888;cursor:not-allowed}
+  .ramo.aprobado{background:#c8e6c9;text-decoration:line-through;color:#333}
+  #reset{margin-top:10px;padding:6px 12px;font-size:0.95rem}
+</style>
+</head>
+<body>
+
+<h1>Malla Medicina Veterinaria (1.º — 5.º Año)</h1>
+<button id="reset">Restablecer malla</button>
+
+<!-- ────────────────────────── AÑO 1 ────────────────────────── -->
+<h2>1.º Año — Semestre 1</h2>
+<div class="semestre">
+  <div class="ramo" id="quimica">Química General y Orgánica</div>
+  <div class="ramo" id="fisica">Física Médica</div>
+  <div class="ramo" id="biologia">Biología Celular</div>
+  <div class="ramo" id="matematicas">Matemáticas</div>
+  <div class="ramo" id="orientacion">Orientación Profesional</div>
+  <div class="ramo" id="estrategias">Estrategias del Aprendizaje</div>
+</div>
+
+<h2>1.º Año — Semestre 2</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="bioquimica"  data-prereq="biologia,quimica">Bioquímica General</div>
+  <div class="ramo bloqueado" id="anatomia1"   data-prereq="biologia">Anatomía Veterinaria I</div>
+  <div class="ramo bloqueado" id="histologia"  data-prereq="biologia">Histología Veterinaria</div>
+  <div class="ramo bloqueado" id="bienestar"   data-prereq="orientacion">Bienestar Animal</div>
+  <div class="ramo"           id="zoologia">Zoología Veterinaria</div>
+  <div class="ramo"           id="ingles1">Inglés Instrumental I</div>
+</div>
+
+<!-- ────────────────────────── AÑO 2 ────────────────────────── -->
+<h2>2.º Año — Semestre 3</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="fisiologia"  data-prereq="bioquimica,histologia,bienestar">Fisiología Animal</div>
+  <div class="ramo bloqueado" id="anatomia2"   data-prereq="anatomia1">Anatomía Veterinaria II</div>
+  <div class="ramo bloqueado" id="microbiologia" data-prereq="bioquimica">Microbiología General</div>
+  <div class="ramo bloqueado" id="inmunologia" data-prereq="histologia,bienestar">Inmunología Veterinaria</div>
+  <div class="ramo bloqueado" id="ecologia"    data-prereq="zoologia">Ecología</div>
+  <div class="ramo bloqueado" id="ingles2"     data-prereq="ingles1">Inglés Instrumental II</div>
+  <div class="ramo bloqueado" id="genetica"    data-prereq="matematicas,biologia">Genética Ganadera</div>
+  <div class="ramo" id="antropologia">Antropología</div>
+  <div class="ramo bloqueado" id="pasantia1" data-prereq="bioquimica,anatomia1,histologia,bienestar,zoologia,ingles1">Pasantía Intrahospitalaria I</div>
+  <div class="ramo bloqueado" id="pasantia2" data-prereq="pasantia1">Pasantía Intrahospitalaria II</div>
+</div>
+
+<h2>2.º Año — Semestre 4</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="fisiopatologia" data-prereq="fisiologia,anatomia2,inmunologia">Fisiopatología Animal</div>
+  <div class="ramo bloqueado" id="patologiagral"  data-prereq="fisiologia,anatomia2">Patología General</div>
+  <div class="ramo bloqueado" id="reproduccion"   data-prereq="fisiologia,anatomia2">Reproducción Animal</div>
+  <div class="ramo bloqueado" id="parasitos"      data-prereq="zoologia">Enfermedades Parasitarias</div>
+  <div class="ramo bloqueado" id="infecciosas"    data-prereq="fisiologia,microbiologia,inmunologia">Enfermedades Infecciosas</div>
+  <div class="ramo bloqueado" id="forrajes"       data-prereq="ecologia">Producción de Forrajes</div>
+  <div class="ramo bloqueado" id="etica"          data-prereq="antropologia">Ética</div>
+  <div class="ramo bloqueado" id="pasantia3" data-prereq="pasantia2">Pasantía Intrahospitalaria III</div>
+  <div class="ramo bloqueado" id="pasantia4" data-prereq="pasantia3">Pasantía Intrahospitalaria IV</div>
+</div>
+
+<!-- ────────────────────────── AÑO 3 ────────────────────────── -->
+<h2>3.º Año — Semestre 5</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="andrologia"  data-prereq="fisiopatologia,reproduccion">Andrología</div>
+  <div class="ramo bloqueado" id="patsis"      data-prereq="patologiagral">Patología Especial de Sistemas</div>
+  <div class="ramo bloqueado" id="farmaco1"    data-prereq="fisiopatologia,infecciosas">Farmacología Veterinaria I</div>
+  <div class="ramo bloqueado" id="nutricion"   data-prereq="forrajes">Nutrición y Alimentación Animal</div>
+  <div class="ramo bloqueado" id="economia"    data-prereq="matematicas,forrajes">Economía</div>
+  <div class="ramo bloqueado" id="carne"       data-prereq="bienestar,forrajes,genetica,reproduccion">Sist. Producción de Carne</div>
+  <div class="ramo bloqueado" id="filosofia"   data-prereq="etica">Filosofía Política</div>
+  <div class="ramo bloqueado" id="pasantia5" data-prereq="pasantia4">Pasantía Intrahospitalaria V</div>
+  <div class="ramo bloqueado" id="pasantia6" data-prereq="pasantia5">Pasantía Intrahospitalaria VI</div>
+</div>
+
+<h2>3.º Año — Semestre 6</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="gineco"          data-prereq="andrologia">Ginecología y Obstetricia</div>
+  <div class="ramo bloqueado" id="cirugia_general" data-prereq="patsis,farmaco1">Cirugía Gral. y Patología Quirúrgica</div>
+  <div class="ramo bloqueado" id="farmaco2"        data-prereq="farmaco1,parasitos">Farmacología Veterinaria II</div>
+  <div class="ramo bloqueado" id="tecCarne"        data-prereq="carne">Tecnología de la Carne</div>
+  <div class="ramo bloqueado" id="contabilidad"    data-prereq="economia">Contabilidad y Administración</div>
+  <div class="ramo bloqueado" id="leche"           data-prereq="genetica,nutricion,reproduccion">Sist. Producción de Leche</div>
+  <div class="ramo bloqueado" id="pasantia7" data-prereq="pasantia6">Pasantía Intrahospitalaria VII</div>
+  <div class="ramo bloqueado" id="pasantia8" data-prereq="pasantia7">Pasantía Intrahospitalaria VIII</div>
+  <div class="ramo bloqueado" id="practica1" data-prereq="pasantia8">Práctica Curricular Ext. I</div>
+</div>
+
+<!-- ────────────────────────── AÑO 4 ────────────────────────── -->
+<h2>4.º Año — Semestre 7</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="estadistica"     data-prereq="contabilidad">Análisis Estadístico</div>
+  <div class="ramo bloqueado" id="cirugia_especial" data-prereq="cirugia_general,farmaco2">Cirugía Especial</div>
+  <div class="ramo bloqueado" id="exploracion"     data-prereq="patsis,gineco">Exploración Clínica de los Animales</div>
+  <div class="ramo bloqueado" id="tecLeche"        data-prereq="tecCarne,leche">Tecnologías de la Leche</div>
+  <div class="ramo bloqueado" id="conservacion"    data-prereq="ecologia">Conservación de la Vida Silvestre</div>
+  <div class="ramo bloqueado" id="peces"           data-prereq="nutricion,reproduccion">Sist. Producción de Peces</div>
+  <div class="ramo bloqueado" id="pasantia9"  data-prereq="pasantia8">Pasantía IX</div>
+  <div class="ramo bloqueado" id="pasantia10" data-prereq="pasantia9">Pasantía X</div>
+  <div class="ramo bloqueado" id="practica2" data-prereq="tecLeche">Práctica Curricular Ext. II</div>
+</div>
+
+<h2>4.º Año — Semestre 8</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="metodologia"  data-prereq="estadistica">Metodología de la Investigación</div>
+  <div class="ramo bloqueado" id="medicina"     data-prereq="cirugia_especial,exploracion">Medicina Interna</div>
+  <div class="ramo bloqueado" id="metodosdiag"  data-prereq="fisica,exploracion">Métodos Compl. de Diagnóstico</div>
+  <div class="ramo bloqueado" id="toxico"       data-prereq="farmaco2">Toxicología Veterinaria</div>
+  <div class="ramo bloqueado" id="epidemio"     data-prereq="infecciosas,estadistica">Epidemiología y Salud Pública</div>
+  <div class="ramo bloqueado" id="proyectos"    data-prereq="contabilidad">Formulación y Eval. de Proyectos</div>
+  <div class="ramo bloqueado" id="pasantia11"  data-prereq="pasantia10">Pasantía XI</div>
+  <div class="ramo bloqueado" id="pasantia12"  data-prereq="pasantia11">Pasantía XII</div>
+  <div class="ramo bloqueado" id="practica3"   data-prereq="medicina">Práctica Curricular Ext. III</div>
+</div>
+
+<!-- ────────────────────────── AÑO 5 ────────────────────────── -->
+<h2>5.º Año — Semestre 9</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="memoria"      data-prereq="medicina">Memoria de Título</div>
+  <div class="ramo bloqueado" id="clinica_rumi" data-prereq="toxico,metodosdiag,medicina">Clínica de Equinos y Rumiantes</div>
+  <div class="ramo bloqueado" id="clinica_comp" data-prereq="toxico,metodosdiag,medicina">Clínica Animales de Compañía</div>
+  <div class="ramo bloqueado" id="clinica_silv" data-prereq="toxico,metodosdiag,medicina,conservacion">Clínica Animales Silvestres</div>
+  <div class="ramo bloqueado" id="inocuidad"    data-prereq="toxico,epidemio,tecLeche">Inocuidad de los Alimentos</div>
+  <div class="ramo bloqueado" id="legislacion"  data-prereq="epidemio">Legislación y Deontología</div>
+  <div class="ramo bloqueado" id="pasantia13" data-prereq="pasantia12">Pasantía XIII</div>
+  <div class="ramo bloqueado" id="pasantia14" data-prereq="pasantia13">Pasantía XIV</div>
+  <div class="ramo bloqueado" id="turno1"      data-prereq="medicina">Turno Hospitalario I</div>
+</div>
+
+<h2>5.º Año — Semestre 10</h2>
+<div class="semestre">
+  <div class="ramo bloqueado" id="internado"   data-prereq="clinica_silv,clinica_rumi,clinica_comp">Internado</div>
+  <div class="ramo bloqueado" id="electivo1">Electivo I</div>
+  <div class="ramo bloqueado" id="electivo2">Electivo II</div>
+  <div class="ramo bloqueado" id="electivo3">Electivo III</div>
+  <div class="ramo bloqueado" id="turno2"      data-prereq="medicina">Turno Hospitalario II</div>
+</div>
+
+<script>
+const ramos=document.querySelectorAll('.ramo');
+
+function verificar(){
+  ramos.forEach(r=>{
+    const prereq=r.dataset.prereq;
+    if(prereq){
+      const ok=prereq.split(',').every(id=>{
+        const p=document.getElementById(id.trim());
+        return p&&p.classList.contains('aprobado');
+      });
+      ok? r.classList.remove('bloqueado') : r.classList.add('bloqueado');
+    }
+  });
+}
+
+ramos.forEach(r=>{
+  r.addEventListener('click',()=>{
+    if(r.classList.contains('bloqueado'))return;
+    r.classList.toggle('aprobado');
+    verificar();
+  });
+});
+
+document.getElementById('reset').addEventListener('click',()=>{
+  ramos.forEach(r=>r.classList.remove('aprobado'));
+  verificar();
+});
+
+verificar(); // inicial
+</script>
+
+</body>
+</html>
