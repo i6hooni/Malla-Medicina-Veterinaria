@@ -1,4 +1,3 @@
-
 const malla = {
   "1° Año - Semestre 1": [
     {
