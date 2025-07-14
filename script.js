@@ -26,7 +26,7 @@ const malla = {
       "nombre": "Estrategias del Aprendizaje"
     }
   ],
-  "1° Año - Semestre 2": [
+  "Semestre 2": [
     {
       "id": "bioquimica",
       "nombre": "Bioquímica General",
@@ -143,7 +143,7 @@ const malla = {
       ]
     }
   ],
-  "2° Año - Semestre 4": [
+  "Semestre 4": [
     {
       "id": "fisiopato",
       "nombre": "Fisiopatología Animal",
@@ -285,7 +285,7 @@ const malla = {
       ]
     }
   ],
-  "3° Año - Semestre 6": [
+  "Semestre 6": [
     {
       "id": "gine",
       "nombre": "Ginecología y Obstetricia",
@@ -423,7 +423,7 @@ const malla = {
       ]
     }
   ],
-  "4° Año - Semestre 8": [
+  "Semestre 8": [
     {
       "id": "metodologia",
       "nombre": "Metodología de la Investigación Científica",
@@ -565,7 +565,7 @@ const malla = {
       ]
     }
   ],
-  "5° Año - Semestre 10": [
+  "Semestre 10": [
     {
       "id": "internado",
       "nombre": "Internado",
