@@ -64,3 +64,8 @@ h1 {
   color: #aaa;
   cursor: not-allowed;
 }
+
+.semestre {
+  display: flex;
+  flex-direction: column;
+}
