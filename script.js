@@ -599,14 +599,32 @@ const malla = {
 let aprobados = new Set();
 
 function crearMalla() {
-  const contenedor = document.querySelector(".malla");
-  for (let bloque in malla) {
-    const seccion = document.createElement("div");
+      const seccion = document.createElement("div");
     seccion.className = "anio";
 
     const titulo = document.createElement("h2");
     titulo.textContent = bloque;
     seccion.appendChild(titulo);
+
+    const contenedorRamos = document.createElement("div");
+    contenedorRamos.className = "semestre";
+
+    malla[bloque].forEach(ramo => {
+      const boton = document.createElement("button");
+      boton.textContent = ramo.nombre;
+      boton.classList.add("ramo");
+      boton.dataset.id = ramo.id;
+
+      if (ramo.prereq) {
+        boton.classList.add("bloqueado");
+        boton.dataset.prereq = JSON.stringify(ramo.prereq);
+      }
+
+      boton.addEventListener("click", () => manejarClick(boton, ramo));
+      contenedorRamos.appendChild(boton);
+    });
+
+    seccion.appendChild(contenedorRamos);
 
     malla[bloque].forEach(ramo => {
       const boton = document.createElement("button");
